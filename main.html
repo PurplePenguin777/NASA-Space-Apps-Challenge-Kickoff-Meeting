@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NASA Space Apps Challenge 2026</title>
+    <!-- Google Model Viewer -->
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
+    <!-- Estilos Oficiales NASA Space Apps & Apple -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Datos de los modelos 3D en Base64 para carga instantánea sin restricciones de CORS -->
+    <script src="models_data.js"></script>
+</head>
+
+<body>
+
+    <!-- 1. Barra de navegación uniforme con glassmorfismo e iluminación activa -->
+    <header class="navbar">
+        <nav class="nav-track">
+            <a href="#inicio" class="nav-item active" data-nav="inicio">NASA Space Apps</a>
+            <a href="#modelos3d" class="nav-item" data-nav="modelos3d">Modelos 3D</a>
+            <a href="#etapas" class="nav-item" data-nav="etapas">Etapas</a>
+            <a href="#equipo" class="nav-item" data-nav="equipo">Equipo</a>
+            <a href="#lenguaje" class="nav-item" data-nav="lenguaje">Lenguaje</a>
+            <a href="#audiencia" class="nav-item" data-nav="audiencia">Audiencia</a>
+            <a href="#recursos" class="nav-item" data-nav="recursos">Recursos</a>
+            <a href="#ideas" class="nav-item" data-nav="ideas">Ideas</a>
+            <a href="#votacion" class="nav-item" data-nav="votacion">Votación</a>
+            <a href="#acuerdos" class="nav-item" data-nav="acuerdos">Acuerdos</a>
+        </nav>
+    </header>
+
+    <!-- 2. Hero principal minimalista: Gradiente oficial Space Apps y espacio profundo -->
+    <section id="inicio" class="hero-section">
+        <!-- Logo oficial Orbit de NASA Space Apps -->
+        <svg class="hero-logo-orbit fade-up" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="45" cy="52" r="32"/>
+            <circle cx="76" cy="38" r="9" stroke-width="4.5"/>
+            <line x1="78" y1="28" x2="80" y2="16" stroke-width="4"/>
+            <line x1="84" y1="33" x2="94" y2="24" stroke-width="4"/>
+            <line x1="86" y1="41" x2="98" y2="35" stroke-width="4"/>
+            <line x1="84" y1="48" x2="96" y2="52" stroke-width="4"/>
+        </svg>
+
+        <span class="hero-tag fade-up">Reunión de equipo · Space Apps 2026</span>
+        <h1 class="hero-title fade-up">Una historia espacial que vale la pena contar.</h1>
+        <p class="hero-lead fade-up">
+            Exploramos el desafío sobre equipos espaciales en la Luna y Marte, alineamos perspectivas y preparamos la participación del equipo.
+        </p>
+    </section>
+
+    <!-- 3. Scrollytelling cósmico: 4 modelos 3D alternando lados en el espacio profundo -->
+    <section id="modelos3d" class="scrolly-cosmos-container">
+        <div class="scrolly-cosmos-header fade-up">
+            <span class="eyebrow on-dark">01 · Exploración 3D en el espacio</span>
+            <h2 class="on-dark">Equipos que hicieron historia en el cosmos.</h2>
+            <p class="lead on-dark">
+                El desafío nos propone rescatar la memoria de artefactos espaciales que completaron su misión y quedaron en la superficie de otros mundos o en órbita solar.
+            </p>
+        </div>
+
+        <!-- Capítulo 1: Curiosity Rover (Modelo a la izquierda, narrativa a la derecha) -->
+        <div class="scrolly-craft-stage fade-up">
+            <div class="stage-3d-pane">
+                <model-viewer id="curiosityViewer"
+                    alt="Modelo 3D del Rover Curiosity de la NASA"
+                    ar
+                    ar-modes="webxr scene-viewer quick-look"
+                    ios-src="24584_Curiosity_static.usdz"
+                    camera-controls
+                    touch-action="pan-y"
+                    interaction-prompt="none"
+                    shadow-intensity="1.2"
+                    exposure="1"
+                    camera-orbit="30deg 75deg 3.4m"
+                    field-of-view="30deg">
+                </model-viewer>
+                <div class="stage-loader" style="position: absolute; font-size: 13px; color: #BACADE;">Cargando Curiosity...</div>
+            </div>
+            <div class="stage-text-pane">
+                <span class="stage-tag">Cráter Gale · Marte</span>
+                <h3 class="stage-title">Curiosity Rover</h3>
+                <p class="stage-desc">
+                    Un laboratorio rodante de una tonelada diseñado para responder si Marte albergó condiciones para la vida microbiana. Sus ruedas de aluminio con suspensión articulada continúan escalando el monte Sharp tras más de una década de descubrimientos.
+                </p>
+                <div class="stage-spec-pills">
+                    <span class="stage-spec-pill">Suspensión rocker-bogie</span>
+                    <span class="stage-spec-pill">Espectrómetro láser ChemCam</span>
+                    <span class="stage-spec-pill">Aterrizaje con Sky Crane (2012)</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Capítulo 2: Ingenuity Mars Helicopter (Narrativa a la izquierda, modelo a la derecha) -->
+        <div class="scrolly-craft-stage reverse fade-up">
+            <div class="stage-3d-pane">
+                <model-viewer id="ingenuityViewer"
+                    alt="Modelo 3D del Helicóptero Ingenuity de la NASA"
+                    ar
+                    ar-modes="webxr scene-viewer quick-look"
+                    ios-src="Ingenuity.usdz"
+                    camera-controls
+                    touch-action="pan-y"
+                    interaction-prompt="none"
+                    shadow-intensity="1.2"
+                    exposure="1"
+                    camera-orbit="0deg 75deg 1.8m"
+                    field-of-view="30deg">
+                </model-viewer>
+                <div class="stage-loader" style="position: absolute; font-size: 13px; color: #BACADE;">Cargando Ingenuity...</div>
+            </div>
+            <div class="stage-text-pane">
+                <span class="stage-tag" style="background: rgba(234, 254, 7, 0.15); color: var(--neon-yellow); border-color: rgba(234, 254, 7, 0.3);">Cráter Jezero · Marte</span>
+                <h3 class="stage-title">Ingenuity Helicopter</h3>
+                <p class="stage-desc">
+                    El primer artefacto humano en lograr un vuelo controlado y propulsado en la atmósfera de otro planeta. Concebido para demostrar cinco vuelos breves, completó 72 misiones aéreas guiando al rover Perseverance.
+                </p>
+                <div class="stage-spec-pills">
+                    <span class="stage-spec-pill">Rotores coaxiales a 2400 RPM</span>
+                    <span class="stage-spec-pill">72 vuelos completados</span>
+                    <span class="stage-spec-pill">Retirado en enero de 2024</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Capítulo 3: Viking Lander (Modelo a la izquierda, narrativa a la derecha) -->
+        <div class="scrolly-craft-stage fade-up">
+            <div class="stage-3d-pane">
+                <model-viewer id="vikingViewer"
+                    alt="Modelo 3D del Viking Lander de la NASA"
+                    ar
+                    ar-modes="webxr scene-viewer quick-look"
+                    camera-controls
+                    touch-action="pan-y"
+                    interaction-prompt="none"
+                    shadow-intensity="1.2"
+                    exposure="1"
+                    camera-orbit="30deg 70deg 3.0m"
+                    field-of-view="30deg">
+                </model-viewer>
+                <div class="stage-loader" style="position: absolute; font-size: 13px; color: #BACADE;">Cargando Viking Lander...</div>
+            </div>
+            <div class="stage-text-pane">
+                <span class="stage-tag" style="background: rgba(228, 55, 0, 0.18); color: #FF6633; border-color: rgba(228, 55, 0, 0.3);">Chryse Planitia · 1976</span>
+                <h3 class="stage-title">Viking Lander</h3>
+                <p class="stage-desc">
+                    El primer módulo de aterrizaje en operar de forma prolongada sobre la superficie marciana. Transmitió las primeras fotografías panorámicas a color de Marte y realizó los primeros experimentos biológicos directos en su suelo.
+                </p>
+                <div class="stage-spec-pills">
+                    <span class="stage-spec-pill">Estructura de tres patas de titanio</span>
+                    <span class="stage-spec-pill">Generadores termoeléctricos RTG</span>
+                    <span class="stage-spec-pill">Más de 6 años de transmisiones</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Capítulo 4: Telescopio Espacial Kepler (Narrativa a la izquierda, modelo a la derecha con zoom ajustado) -->
+        <div class="scrolly-craft-stage reverse fade-up">
+            <div class="stage-3d-pane">
+                <model-viewer id="keplerViewer"
+                    alt="Modelo 3D del Telescopio Espacial Kepler"
+                    ar
+                    ar-modes="webxr scene-viewer quick-look"
+                    camera-controls
+                    touch-action="pan-y"
+                    interaction-prompt="none"
+                    shadow-intensity="1.2"
+                    exposure="1"
+                    camera-orbit="45deg 70deg 11m"
+                    field-of-view="35deg">
+                </model-viewer>
+                <div class="stage-loader" style="position: absolute; font-size: 13px; color: #BACADE;">Cargando Kepler...</div>
+            </div>
+            <div class="stage-text-pane">
+                <span class="stage-tag">Órbita heliocéntrica</span>
+                <h3 class="stage-title">Telescopio Espacial Kepler</h3>
+                <p class="stage-desc">
+                    El observatorio que revolucionó nuestra comprensión del universo. Apuntó su fotómetro a más de 150,000 estrellas para detectar planetas extrasolares por el método de tránsito, descubriendo más de 2,600 mundos distantes.
+                </p>
+                <div class="stage-spec-pills">
+                    <span class="stage-spec-pill">Fotómetro de 0.95 m</span>
+                    <span class="stage-spec-pill">2,600+ exoplanetas confirmados</span>
+                    <span class="stage-spec-pill">Retirado en órbita solar (2018)</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Sección: Alinear expectativas (Transición a blanco puro Apple) -->
+    <div class="section-full-width section-theme-light">
+        <section id="etapas" class="section">
+            <div class="section-header fade-up">
+                <span class="eyebrow">02 · Alinear expectativas</span>
+                <h2>Qué podemos preparar ahora y qué decidiremos durante el evento.</h2>
+                <p class="lead">Organizar el tiempo con anticipación nos ayuda a avanzar con serenidad durante el fin de semana del reto.</p>
+            </div>
+
+            <div class="grid-3">
+                <div class="card-squircle fade-up">
+                    <span class="tag-pill" style="background: rgba(46, 150, 245, 0.15); color: var(--electric-blue); margin-bottom: 16px;">Antes del evento</span>
+                    <h3 style="margin-bottom: 10px; font-size: 20px;">Preparación básica</h3>
+                    <p style="color: var(--text-muted); font-size: 15px; line-height: 1.6;">
+                        Revisar los recursos oficiales, familiarizarse con los catálogos de misiones de la NASA, probar las herramientas del equipo y descansar bien.
+                    </p>
+                </div>
+
+                <div class="card-squircle fade-up">
+                    <span class="tag-pill" style="background: rgba(9, 96, 225, 0.12); color: var(--neon-blue); margin-bottom: 16px;">Al iniciar</span>
+                    <h3 style="margin-bottom: 10px; font-size: 20px;">Elección del rumbo</h3>
+                    <p style="color: var(--text-muted); font-size: 15px; line-height: 1.6;">
+                        Elegir el equipo o misión espacial específica que protagonizará nuestra historia, definir el público objetivo y acordar el formato de la entrega.
+                    </p>
+                </div>
+
+                <div class="card-squircle fade-up">
+                    <span class="tag-pill" style="background: rgba(142, 17, 0, 0.1); color: var(--martian-red); margin-bottom: 16px;">Durante el desarrollo</span>
+                    <h3 style="margin-bottom: 10px; font-size: 20px;">Construcción y ajustes</h3>
+                    <p style="color: var(--text-muted); font-size: 15px; line-height: 1.6;">
+                        Crear la narrativa, diseñar los elementos visuales, montar el prototipo, recopilar opiniones tempranas y preparar la presentación final.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- 5. Sección: Trabajar en equipo (Transición a Deep Blue espacial) -->
+    <div class="section-full-width section-theme-deep-blue">
+        <section id="equipo" class="section">
+            <div class="section-header fade-up">
+                <span class="eyebrow on-dark">03 · Trabajar en equipo</span>
+                <h2 class="on-dark">Tenemos perspectivas distintas. Eso enriquece el proyecto.</h2>
+                <p class="lead on-dark">Cada disciplina aporta una mirada valiosa para transformar información técnica en una experiencia memorable.</p>
+            </div>
+
+            <div class="grid-4">
+                <div class="role-card-dark fade-up">
+                    <div class="role-icon" style="background: rgba(228, 55, 0, 0.18); color: var(--rocket-red);">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="m3 11 18-5v12L3 14v-3z"/>
+                            <path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/>
+                        </svg>
+                    </div>
+                    <div class="role-title">Marketing (2 personas)</div>
+                    <div class="role-desc" style="color: #BACADE;">
+                        Identificar a la audiencia, construir el tono de la historia, estructurar el mensaje para que sea atractivo y preparar la presentación del proyecto.
+                    </div>
+                </div>
+
+                <div class="role-card-dark fade-up">
+                    <div class="role-icon" style="background: rgba(234, 254, 7, 0.2); color: var(--neon-yellow);">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="m2 22 10-20 10 20"/>
+                            <path d="M6 14h12"/>
+                            <circle cx="12" cy="7" r="1.5"/>
+                        </svg>
+                    </div>
+                    <div class="role-title">Ingeniería civil</div>
+                    <div class="role-desc" style="color: #BACADE;">
+                        Comprender la resistencia de materiales, las condiciones del suelo lunar y marciano, la escala de las estructuras y el contexto físico de las misiones.
+                    </div>
+                </div>
+
+                <div class="role-card-dark fade-up">
+                    <div class="role-icon" style="background: rgba(46, 150, 245, 0.2); color: var(--blue-yonder);">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                            <line x1="16" y1="2" x2="16" y2="6"/>
+                            <line x1="8" y1="2" x2="8" y2="6"/>
+                            <line x1="3" y1="10" x2="21" y2="10"/>
+                            <path d="m9 16 2 2 4-4"/>
+                        </svg>
+                    </div>
+                    <div class="role-title">Administración</div>
+                    <div class="role-desc" style="color: #BACADE;">
+                        Coordinar los tiempos de trabajo, cuidar la viabilidad de lo que prometemos entregar, documentar acuerdos y mantener el orden del equipo.
+                    </div>
+                </div>
+
+                <div class="role-card-dark fade-up">
+                    <div class="role-icon" style="background: rgba(9, 96, 225, 0.25); color: #5CA3FF;">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="4" y="4" width="16" height="16" rx="2"/>
+                            <rect x="9" y="9" width="6" height="6"/>
+                            <line x1="9" y1="1" x2="9" y2="4"/>
+                            <line x1="15" y1="1" x2="15" y2="4"/>
+                            <line x1="9" y1="20" x2="9" y2="23"/>
+                            <line x1="15" y1="20" x2="15" y2="23"/>
+                            <line x1="20" y1="9" x2="23" y2="9"/>
+                            <line x1="20" y1="14" x2="23" y2="14"/>
+                            <line x1="1" y1="9" x2="4" y2="9"/>
+                            <line x1="1" y1="14" x2="4" y2="14"/>
+                        </svg>
+                    </div>
+                    <div class="role-title">Ingeniería en sistemas</div>
+                    <div class="role-desc" style="color: #BACADE;">
+                        Desarrollar la experiencia interactiva, integrar visualizaciones web y 3D, estructurar los datos de la NASA y asegurar que todo funcione sin fricciones.
+                    </div>
+                </div>
+            </div>
+
+            <div class="callout-box-dark fade-up">
+                <strong>Integración en el equipo:</strong> Cualquier persona que se sume el día del evento contará con este espacio para conocer el contexto, los recursos y las decisiones de inmediato.
+            </div>
+        </section>
+    </div>
+
+    <!-- 6. Sección: Un lenguaje común (Transición a blanco suave Apple) -->
+    <div class="section-full-width section-theme-white-soft">
+        <section id="lenguaje" class="section">
+            <div class="section-header fade-up">
+                <span class="eyebrow">04 · Vocabulario del proyecto</span>
+                <h2>Conceptos para entendernos sin complicaciones.</h2>
+                <p class="lead">Definiciones directas y prácticas para que todas las personas del equipo dialoguen con la misma claridad.</p>
+            </div>
+
+            <div class="grid-3">
+                <div class="concept-card fade-up">
+                    <h3>Experiencia de usuario (UX)</h3>
+                    <p>Cómo se siente una persona cuando recorre nuestra historia o aplicación. Buscamos que sea clara, agradable y fácil de comprender.</p>
+                </div>
+
+                <div class="concept-card fade-up">
+                    <h3>Interfaz gráfica (UI)</h3>
+                    <p>Lo que la persona ve y toca en la pantalla: botones, tipografía, paleta de colores, tarjetas e ilustraciones.</p>
+                </div>
+
+                <div class="concept-card fade-up">
+                    <h3>Prototipo</h3>
+                    <p>Una versión preliminar que permite probar cómo se verá y funcionará la idea antes de invertir tiempo en desarrollarla por completo.</p>
+                </div>
+
+                <div class="concept-card fade-up">
+                    <h3>Datos de la NASA</h3>
+                    <p>Información oficial y verificada: nombres de misiones, coordenadas de aterrizaje, fotografías y registros de telemetría.</p>
+                </div>
+
+                <div class="concept-card fade-up">
+                    <h3>Storytelling</h3>
+                    <p>El arte de estructurar un relato con inicio, desafío y desenlace, logrando que los datos técnicos despierten curiosidad y empatía.</p>
+                </div>
+
+                <div class="concept-card fade-up">
+                    <h3>Accesibilidad</h3>
+                    <p>Asegurar que cualquier persona, sin importar su edad, dispositivo o capacidades visuales, pueda disfrutar del proyecto sin barreras.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- 7. Sección: Pensar en la audiencia (Transición a Celeste Cósmico) -->
+    <div class="section-full-width section-theme-celeste">
+        <section id="audiencia" class="section">
+            <div class="section-header fade-up">
+                <span class="eyebrow">05 · Pensar en la audiencia</span>
+                <h2>¿Cómo explicamos ciencia sin perder rigor?</h2>
+                <p class="lead">Imaginemos que le contamos la misión a personas de 8 a 14 años. La sencillez en el lenguaje acerca la ciencia.</p>
+            </div>
+
+            <div class="grid-2">
+                <div class="card-squircle fade-up">
+                    <span class="tag-pill" style="background: rgba(228, 55, 0, 0.12); color: var(--rocket-red); margin-bottom: 14px;">Enfoque técnico tradicional</span>
+                    <p style="font-size: 16px; color: var(--text-dark); margin-bottom: 10px; font-style: italic;">
+                        “El sismómetro registra movimientos del suelo y permite estudiar la actividad sísmica lunar”.
+                    </p>
+                    <p style="font-size: 14px; color: var(--text-muted); line-height: 1.55;">
+                        Usa terminología técnica directa que suele requerir conocimiento previo sobre geología y física.
+                    </p>
+                </div>
+
+                <div class="card-squircle fade-up">
+                    <span class="tag-pill" style="background: rgba(9, 96, 225, 0.12); color: var(--neon-blue); margin-bottom: 14px;">Enfoque didáctico y cercano</span>
+                    <p style="font-size: 16px; color: var(--text-dark); margin-bottom: 10px; font-weight: 500;">
+                        “Este instrumento escucha pequeños temblores en la Luna para descubrir qué secretos esconde bajo su superficie”.
+                    </p>
+                    <p style="font-size: 14px; color: var(--text-muted); line-height: 1.55;">
+                        No elimina la ciencia: la explica con palabras cotidianas. Más adelante podemos añadir el término técnico sin abrumar.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- 8. Sección: Recursos oficiales (Transición a Espacio Nocturno NASA) -->
+    <div class="section-full-width section-theme-space-dark">
+        <section id="recursos" class="section">
+            <div class="section-header fade-up">
+                <span class="eyebrow on-dark">06 · Documentación</span>
+                <h2 class="on-dark">Material oficial del reto y fuentes de datos.</h2>
+                <p class="lead on-dark">Enlaces directos a las páginas y repositorios que proporciona la NASA para fundamentar nuestro trabajo.</p>
+            </div>
+
+            <div class="grid-4">
+                <a href="https://www.spaceappschallenge.org/2026/challenges/nasas-discarded-equipment-storytelling/?tab=resources" target="_blank" rel="noopener noreferrer" class="card-squircle-dark fade-up" style="text-decoration: none; color: inherit;">
+                    <span class="tag-pill" style="background: rgba(46, 150, 245, 0.2); color: var(--blue-yonder); margin-bottom: 12px;">Space Apps 2026</span>
+                    <h3 style="font-size: 18px; margin-bottom: 8px; color: var(--white);">Reto oficial</h3>
+                    <p style="font-size: 14px; color: #BACADE; line-height: 1.5; margin-bottom: 16px;">
+                        Descripción completa del desafío, criterios de evaluación y preguntas sugeridas por la NASA.
+                    </p>
+                    <span style="font-size: 13px; font-weight: 600; color: var(--neon-yellow);">Ver recursos oficiales ↗</span>
+                </a>
+
+                <a href="https://nssdc.gsfc.nasa.gov/" target="_blank" rel="noopener noreferrer" class="card-squircle-dark fade-up" style="text-decoration: none; color: inherit;">
+                    <span class="tag-pill" style="background: rgba(9, 96, 225, 0.2); color: #5CA3FF; margin-bottom: 12px;">Base de datos</span>
+                    <h3 style="font-size: 18px; margin-bottom: 8px; color: var(--white);">Catálogo NSSDC</h3>
+                    <p style="font-size: 14px; color: #BACADE; line-height: 1.5; margin-bottom: 16px;">
+                        Catálogo maestro de sondas, satélites, módulos de descenso y naves de misiones espaciales.
+                    </p>
+                    <span style="font-size: 13px; font-weight: 600; color: var(--blue-yonder);">Explorar catálogo ↗</span>
+                </a>
+
+                <a href="https://spaceplace.nasa.gov/" target="_blank" rel="noopener noreferrer" class="card-squircle-dark fade-up" style="text-decoration: none; color: inherit;">
+                    <span class="tag-pill" style="background: rgba(234, 254, 7, 0.2); color: var(--neon-yellow); margin-bottom: 12px;">Didáctica</span>
+                    <h3 style="font-size: 18px; margin-bottom: 8px; color: var(--white);">NASA Space Place</h3>
+                    <p style="font-size: 14px; color: #BACADE; line-height: 1.5; margin-bottom: 16px;">
+                        Portal educativo con explicaciones claras, ilustraciones e historias para público joven.
+                    </p>
+                    <span style="font-size: 13px; font-weight: 600; color: var(--neon-yellow);">Visitar Space Place ↗</span>
+                </a>
+
+                <a href="https://eyes.nasa.gov/" target="_blank" rel="noopener noreferrer" class="card-squircle-dark fade-up" style="text-decoration: none; color: inherit;">
+                    <span class="tag-pill" style="background: rgba(228, 55, 0, 0.2); color: #FF6633; margin-bottom: 12px;">Interactividad</span>
+                    <h3 style="font-size: 18px; margin-bottom: 8px; color: var(--white);">NASA Eyes & 3D</h3>
+                    <p style="font-size: 14px; color: #BACADE; line-height: 1.5; margin-bottom: 16px;">
+                        Modelos tridimensionales en tiempo real, órbitas y visualizaciones oficiales de misiones.
+                    </p>
+                    <span style="font-size: 13px; font-weight: 600; color: #FF6633;">Abrir NASA Eyes ↗</span>
+                </a>
+            </div>
+        </section>
+    </div>
+
+    <!-- 9. Sección interactiva: Lluvia de ideas (Transición a blanco de laboratorio) -->
+    <div class="section-full-width section-theme-lab-white">
+        <section id="ideas" class="section">
+            <div class="section-header fade-up">
+                <span class="eyebrow">07 · Participación abierta</span>
+                <h2>¿Qué nos gustaría explorar?</h2>
+                <p class="lead">Escribe ideas o preguntas que despierten tu curiosidad. Se reflejarán directamente en la sección de votación.</p>
+            </div>
+
+            <div class="ideas-grid">
+                <!-- Entrada de ideas -->
+                <div class="card-squircle fade-up">
+                    <h3 style="font-size: 18px; margin-bottom: 12px;">Añadir una idea</h3>
+                    <div style="display: flex; gap: 10px; margin-bottom: 20px; width: 100%; max-width: 440px;">
+                        <input type="text" id="ideaInput" class="input-box" placeholder="Ej: Un cuento ilustrado sobre el primer aterrizaje en Marte..." autocomplete="off">
+                        <button type="button" id="addIdeaBtn" class="btn-pill" style="flex-shrink: 0;">Sumar idea</button>
+                    </div>
+                    
+                    <div style="font-size: 13px; color: var(--text-muted); margin-bottom: 12px;">Ideas registradas para la votación:</div>
+                    <div id="ideasChips" class="ideas-chips"></div>
+                </div>
+
+                <!-- Preguntas orientadoras para el equipo -->
+                <div class="card-squircle fade-up">
+                    <h3 style="font-size: 18px; margin-bottom: 12px;">Preguntas para reflexionar juntos</h3>
+                    <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 16px;">Puntos de partida para inspirar la conversación:</p>
+                    <ul style="list-style: none; display: flex; flex-direction: column; gap: 12px; font-size: 14px; color: var(--text-dark); width: 100%;">
+                        <li style="display: flex; gap: 10px; align-items: center; justify-content: center;">
+                            <span style="display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--blue-yonder); flex-shrink: 0;"></span>
+                            <span>¿Qué parte del reto nos genera mayor entusiasmo al pensar en contarla?</span>
+                        </li>
+                        <li style="display: flex; gap: 10px; align-items: center; justify-content: center;">
+                            <span style="display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--neon-blue); flex-shrink: 0;"></span>
+                            <span>¿Qué público imaginamos disfrutando más de nuestra propuesta?</span>
+                        </li>
+                        <li style="display: flex; gap: 10px; align-items: center; justify-content: center;">
+                            <span style="display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--rocket-red); flex-shrink: 0;"></span>
+                            <span>¿Qué habilidades nuevas nos gustaría practicar durante el fin de semana?</span>
+                        </li>
+                        <li style="display: flex; gap: 10px; align-items: center; justify-content: center;">
+                            <span style="display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--electric-blue); flex-shrink: 0;"></span>
+                            <span>¿Qué dudas técnicas o de diseño conviene revisar en la documentación oficial?</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- 10. Sección interactiva: Votación de caminos (Transición a Medianoche Espacial) -->
+    <div class="section-full-width section-theme-midnight">
+        <section id="votacion" class="section">
+            <div class="section-header fade-up">
+                <span class="eyebrow on-dark">08 · Dirección del proyecto</span>
+                <h2 class="on-dark">¿Qué tipo de experiencia nos interesa explorar?</h2>
+                <p class="lead on-dark" style="margin-bottom: 12px;">Haz clic en la opción que más te atraiga para registrar tu preferencia.</p>
+                <!-- Botón para reiniciar votaciones -->
+                <button type="button" id="resetVotesBtn" class="btn-subtle">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+                        <path d="M3 3v5h5"/>
+                    </svg>
+                    Reiniciar votaciones
+                </button>
+            </div>
+
+            <!-- Contenedor dinámico alimentado por las ideas añadidas -->
+            <div id="pollCardsContainer" class="poll-options fade-up"></div>
+        </section>
+    </div>
+
+    <!-- 11. Sección: Acuerdos y cuaderno de compromisos (Transición a Entorno de Acuerdos Limpio) -->
+    <div class="section-full-width section-theme-agreements">
+        <section id="acuerdos" class="section">
+            <div class="section-header fade-up">
+                <span class="eyebrow">09 · Organización del equipo</span>
+                <h2>Salir con claridad, no con todo resuelto.</h2>
+                <p class="lead">Pautas de colaboración y cuaderno para anotar los compromisos tomados hoy.</p>
+            </div>
+
+            <div class="grid-4">
+                <div class="card-squircle fade-up">
+                    <div class="role-icon" style="background: rgba(46, 150, 245, 0.15); color: var(--electric-blue); width: 36px; height: 36px; font-size: 14px; margin-bottom: 12px;">01</div>
+                    <h3 style="font-size: 17px; margin-bottom: 6px;">Comunicación</h3>
+                    <p style="font-size: 14px; color: var(--text-muted); line-height: 1.5;">
+                        Elegir un único canal principal de mensajería y avisar con tiempo cuando algo tome más tiempo de lo esperado.
+                    </p>
+                </div>
+
+                <div class="card-squircle fade-up">
+                    <div class="role-icon" style="background: rgba(9, 96, 225, 0.12); color: var(--neon-blue); width: 36px; height: 36px; font-size: 14px; margin-bottom: 12px;">02</div>
+                    <h3 style="font-size: 17px; margin-bottom: 6px;">Decisiones</h3>
+                    <p style="font-size: 14px; color: var(--text-muted); line-height: 1.5;">
+                        Escuchar todas las sugerencias, verificar que cumplan con las bases del reto y dejar los acuerdos por escrito.
+                    </p>
+                </div>
+
+                <div class="card-squircle fade-up">
+                    <div class="role-icon" style="background: rgba(234, 254, 7, 0.25); color: #626a00; width: 36px; height: 36px; font-size: 14px; margin-bottom: 12px;">03</div>
+                    <h3 style="font-size: 17px; margin-bottom: 6px;">Tareas claras</h3>
+                    <p style="font-size: 14px; color: var(--text-muted); line-height: 1.5;">
+                        Asignar un responsable directo por tarea, un resultado esperado comprensible y una hora acordada de revisión.
+                    </p>
+                </div>
+
+                <div class="card-squircle fade-up">
+                    <div class="role-icon" style="background: rgba(228, 55, 0, 0.12); color: var(--rocket-red); width: 36px; height: 36px; font-size: 14px; margin-bottom: 12px;">04</div>
+                    <h3 style="font-size: 17px; margin-bottom: 6px;">Ayuda mutua</h3>
+                    <p style="font-size: 14px; color: var(--text-muted); line-height: 1.5;">
+                        Explicar con paciencia los conceptos de cada área. Preguntar y aclarar dudas es avanzar, nunca una interrupción.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Cuaderno de notas editable -->
+            <div class="agreements-box fade-up">
+                <div style="display: flex; justify-content: center; align-items: center; gap: 14px; margin-bottom: 14px;">
+                    <label for="agreementsTextarea" style="font-weight: 600; font-size: 16px;">Cuaderno de acuerdos de esta reunión</label>
+                    <span id="agreementsStatus" style="font-size: 12.5px; color: var(--neon-blue); background: rgba(9, 96, 225, 0.08); padding: 2px 10px; border-radius: var(--radius-pill);">Guardado</span>
+                </div>
+                <textarea id="agreementsTextarea" class="agreements-textarea" placeholder="Escribe aquí los compromisos acordados por el equipo..."></textarea>
+            </div>
+        </section>
+    </div>
+
+    <!-- 12. Pie de página minimalista NASA & Apple (Negro Cósmico) -->
+    <footer class="footer">
+        <div style="max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 8px;">
+            <p style="font-weight: 600; font-size: 15px; color: var(--white);">NASA Space Apps Challenge 2026</p>
+            <p style="color: #8CA3C7; font-size: 13.5px;">Storytelling about NASA's Discarded Equipment on the Moon and Mars</p>
+        </div>
+    </footer>
+
+    <!-- Controlador de animaciones y modelos -->
+    <script src="js/app.js"></script>
+</body>
+
+</html>

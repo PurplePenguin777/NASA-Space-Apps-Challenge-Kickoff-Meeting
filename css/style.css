@@ -1,0 +1,928 @@
+/* ============================================================
+   NASA SPACE APPS CHALLENGE 2026 · SISTEMA DE DISEÑO
+   Fusión de diseño espacial NASA y arquitectura Apple
+   ============================================================ */
+
+:root {
+    /* Paleta oficial Space Apps Brand Guide */
+    --blue-yonder: #2E96F5;
+    --neon-blue: #0960E1;
+    --electric-blue: #0042A6;
+    --deep-blue: #07173F;
+    --blue-near-black: #050B1A;
+    --cosmic-black: #030712;
+    --rocket-red: #E43700;
+    --martian-red: #8E1100;
+    --neon-yellow: #EAFE07;
+    --white: #FFFFFF;
+
+    /* Entorno luminoso estilo Apple */
+    --bg-light: #F6F8FC;
+    --bg-card-light: #FFFFFF;
+    --text-dark: #07173F;
+    --text-muted: #5A6A85;
+    --line-light: rgba(7, 23, 63, 0.08);
+
+    /* Entorno oscuro estilo NASA */
+    --bg-card-dark: rgba(255, 255, 255, 0.05);
+    --line-dark: rgba(255, 255, 255, 0.12);
+    --text-light: #FFFFFF;
+    --text-light-muted: #A5B6D4;
+
+    /* Squircles y radios Apple */
+    --radius-squircle: 28px;
+    --radius-card: 22px;
+    --radius-pill: 999px;
+
+    /* Sombras */
+    --shadow-soft: 0 14px 40px rgba(7, 23, 63, 0.06);
+    --shadow-hover: 0 22px 50px rgba(9, 96, 225, 0.14);
+    --shadow-dark: 0 24px 60px rgba(0, 0, 0, 0.5);
+    --glow-neon: 0 0 24px rgba(234, 254, 7, 0.35);
+
+    /* Tipografía */
+    --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, sans-serif;
+    --ease-apple: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    background: var(--blue-near-black);
+    color: var(--text-dark);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+body {
+    overflow-x: hidden;
+    line-height: 1.55;
+    text-align: center;
+}
+
+/* ============================================================
+   1. Tipografía centrada en sentence case y Text Mask Reveals
+   ============================================================ */
+h1, h2, h3, h4, p, span, a, label {
+    text-align: center;
+}
+
+.eyebrow {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--neon-blue);
+    margin-bottom: 12px;
+}
+
+.eyebrow.on-dark {
+    color: var(--neon-yellow);
+}
+
+h2 {
+    font-size: clamp(28px, 4.2vw, 44px);
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    line-height: 1.15;
+    margin-bottom: 16px;
+    color: var(--text-dark);
+}
+
+h2.on-dark {
+    color: var(--white);
+}
+
+.lead {
+    font-size: clamp(16px, 2vw, 19px);
+    color: var(--text-muted);
+    max-width: 680px;
+    margin: 0 auto clamp(36px, 5vh, 52px);
+    line-height: 1.6;
+}
+
+.lead.on-dark {
+    color: var(--text-light-muted);
+}
+
+/* Text Mask Reveals estilo Apple */
+.reveal-mask {
+    overflow: hidden;
+    display: inline-block;
+}
+
+.reveal-mask > * {
+    display: inline-block;
+    transform: translateY(110%);
+    opacity: 0;
+    transition: transform 0.85s var(--ease-apple), opacity 0.85s var(--ease-apple);
+}
+
+.reveal-mask.active > * {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* ============================================================
+   2. Barra de navegación con glassmorfismo uniforme
+   ============================================================ */
+.navbar {
+    position: fixed;
+    top: 14px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    max-width: calc(100vw - 28px);
+    width: max-content;
+    background: rgba(255, 255, 255, 0.78);
+    backdrop-filter: blur(28px) saturate(190%);
+    -webkit-backdrop-filter: blur(28px) saturate(190%);
+    border: 1px solid rgba(255, 255, 255, 0.75);
+    box-shadow: 0 10px 32px rgba(7, 23, 63, 0.1);
+    border-radius: var(--radius-pill);
+    padding: 4px 6px;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s var(--ease-apple);
+}
+
+.nav-track {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    max-width: 100%;
+}
+
+.nav-track::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-item {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 450;
+    padding: 6px 13px;
+    border-radius: var(--radius-pill);
+    transition: color 0.25s var(--ease-apple), background-color 0.25s var(--ease-apple);
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+}
+
+.nav-item:hover {
+    color: var(--text-dark);
+}
+
+.nav-item.active {
+    color: var(--white);
+    background: var(--deep-blue);
+    font-weight: 550;
+    box-shadow: 0 2px 10px rgba(7, 23, 63, 0.25);
+}
+
+/* ============================================================
+   3. Hero: Espacio cósmico minimalista puro
+   ============================================================ */
+.hero-section {
+    min-height: 82vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 140px 24px 70px;
+    background: radial-gradient(circle at 50% 25%, #0d2a6b 0%, var(--deep-blue) 60%, var(--blue-near-black) 100%);
+    color: var(--white);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: 
+        radial-gradient(1px 1px at 30px 40px, #ffffff, rgba(0,0,0,0)),
+        radial-gradient(1.5px 1.5px at 150px 190px, #EAFE07, rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 280px 90px, #2E96F5, rgba(0,0,0,0)),
+        radial-gradient(1.5px 1.5px at 400px 250px, #ffffff, rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 540px 130px, #ffffff, rgba(0,0,0,0)),
+        radial-gradient(1.5px 1.5px at 720px 330px, #2E96F5, rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 880px 100px, #EAFE07, rgba(0,0,0,0));
+    background-repeat: repeat;
+    background-size: 600px 400px;
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.hero-logo-orbit {
+    width: 68px;
+    height: 68px;
+    margin-bottom: 22px;
+    color: var(--white);
+    filter: drop-shadow(0 0 20px rgba(46, 150, 245, 0.45));
+}
+
+.hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(234, 254, 7, 0.15);
+    color: var(--neon-yellow);
+    border: 1px solid rgba(234, 254, 7, 0.35);
+    padding: 6px 18px;
+    border-radius: var(--radius-pill);
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 22px;
+}
+
+.hero-title {
+    max-width: 900px;
+    margin: 0 auto 20px;
+    font-size: clamp(34px, 5.2vw, 58px);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.12;
+    color: var(--white);
+}
+
+.hero-lead {
+    max-width: 680px;
+    margin: 0 auto;
+    font-size: clamp(17px, 2.2vw, 20px);
+    line-height: 1.6;
+    color: #BACADE;
+}
+
+/* ============================================================
+   4. Scrollytelling cósmico (4 naves a lo largo del recorrido)
+   ============================================================ */
+.scrolly-cosmos-container {
+    background: var(--blue-near-black);
+    color: var(--white);
+    padding: 80px 24px;
+    position: relative;
+}
+
+.scrolly-cosmos-header {
+    max-width: 800px;
+    margin: 0 auto 70px;
+    text-align: center;
+}
+
+.scrolly-craft-stage {
+    min-height: 80vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+    max-width: 1140px;
+    margin: 0 auto 100px;
+    padding: 44px;
+    background: rgba(7, 23, 63, 0.65);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(46, 150, 245, 0.22);
+    border-radius: var(--radius-squircle);
+    box-shadow: var(--shadow-dark);
+    position: relative;
+}
+
+.scrolly-craft-stage.reverse .stage-3d-pane {
+    order: 2;
+}
+
+.scrolly-craft-stage.reverse .stage-text-pane {
+    order: 1;
+}
+
+.stage-3d-pane {
+    height: 480px;
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle at 50% 50%, rgba(9, 96, 225, 0.16) 0%, rgba(0,0,0,0) 72%);
+    border-radius: var(--radius-card);
+}
+
+.stage-3d-pane model-viewer {
+    width: 100%;
+    height: 100%;
+    outline: none;
+    --progress-bar-color: var(--neon-yellow);
+}
+
+.stage-text-pane {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.stage-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 16px;
+    border-radius: var(--radius-pill);
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 14px;
+    background: rgba(46, 150, 245, 0.18);
+    color: var(--blue-yonder);
+    border: 1px solid rgba(46, 150, 245, 0.3);
+}
+
+.stage-title {
+    font-size: clamp(24px, 3vw, 36px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    margin-bottom: 14px;
+    color: var(--white);
+    text-align: center;
+}
+
+.stage-desc {
+    font-size: 16px;
+    color: #BACADE;
+    line-height: 1.65;
+    margin-bottom: 24px;
+    text-align: center;
+    max-width: 480px;
+}
+
+.stage-spec-pills {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+}
+
+.stage-spec-pill {
+    font-size: 12.5px;
+    padding: 4px 12px;
+    border-radius: var(--radius-pill);
+    background: rgba(255, 255, 255, 0.08);
+    color: #BACADE;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* ============================================================
+   5. Transiciones rítmicas de color entre secciones
+   ============================================================ */
+
+/* Sección A: Luminosa blanca (Etapas) */
+.section-theme-light {
+    background: #FFFFFF;
+    color: var(--text-dark);
+}
+
+/* Sección B: Azul marino profundo NASA (Equipo) */
+.section-theme-deep-blue {
+    background: var(--deep-blue);
+    color: var(--white);
+}
+
+/* Sección C: Blanco suave Apple (Lenguaje) */
+.section-theme-white-soft {
+    background: var(--bg-light);
+    color: var(--text-dark);
+}
+
+/* Sección D: Tinte celeste cósmico (Audiencia) */
+.section-theme-celeste {
+    background: #EAF2FB;
+    color: var(--text-dark);
+}
+
+/* Sección E: Espacio nocturno puro (Recursos) */
+.section-theme-space-dark {
+    background: var(--blue-near-black);
+    color: var(--white);
+}
+
+/* Sección F: Blanco puro de laboratorio (Ideas) */
+.section-theme-lab-white {
+    background: #FFFFFF;
+    color: var(--text-dark);
+}
+
+/* Sección G: Medianoche espacial interactiva (Votación) */
+.section-theme-midnight {
+    background: #08173E;
+    color: var(--white);
+}
+
+/* Sección H: Entorno de acuerdos limpio (Acuerdos) */
+.section-theme-agreements {
+    background: #F5F7FB;
+    color: var(--text-dark);
+}
+
+/* ============================================================
+   6. Estilos de contenido y tarjetas centradas
+   ============================================================ */
+.section {
+    padding: clamp(76px, 9vh, 108px) 24px;
+    max-width: 1140px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.section-full-width {
+    width: 100%;
+}
+
+.section-header {
+    max-width: 760px;
+    margin: 0 auto clamp(36px, 5vh, 52px);
+    text-align: center;
+}
+
+/* Squircles limpios estilo Apple (sin bordes laterales) */
+.card-squircle {
+    background: var(--bg-card-light);
+    border: 1px solid var(--line-light);
+    border-radius: var(--radius-squircle);
+    padding: clamp(28px, 4vw, 40px);
+    box-shadow: var(--shadow-soft);
+    transition: transform 0.35s var(--ease-apple), box-shadow 0.35s var(--ease-apple);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.card-squircle:hover {
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-3px);
+}
+
+/* Squircles en modo oscuro espacial */
+.card-squircle-dark {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: var(--radius-squircle);
+    padding: clamp(28px, 4vw, 40px);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: var(--shadow-dark);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.35s var(--ease-apple), border-color 0.35s var(--ease-apple);
+}
+
+.card-squircle-dark:hover {
+    transform: translateY(-3px);
+    border-color: rgba(46, 150, 245, 0.4);
+}
+
+.tag-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 5px 14px;
+    border-radius: var(--radius-pill);
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+/* Grillas */
+.grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    justify-content: center;
+}
+
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+    justify-content: center;
+}
+
+.grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 20px;
+    justify-content: center;
+}
+
+/* Tarjetas de roles */
+.role-card-dark {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: var(--radius-card);
+    padding: 30px 22px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    backdrop-filter: blur(16px);
+    transition: all 0.3s var(--ease-apple);
+}
+
+.role-card-dark:hover {
+    transform: translateY(-3px);
+    border-color: var(--blue-yonder);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.role-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+}
+
+.role-title {
+    font-weight: 600;
+    font-size: 17px;
+    margin-bottom: 8px;
+    text-align: center;
+}
+
+.role-desc {
+    font-size: 14px;
+    line-height: 1.55;
+    text-align: center;
+}
+
+.callout-box-dark {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: var(--radius-card);
+    padding: 24px 32px;
+    font-size: 15px;
+    color: var(--white);
+    line-height: 1.6;
+    text-align: center;
+    max-width: 820px;
+    margin: 32px auto 0;
+}
+
+/* Tarjetas de conceptos */
+.concept-card {
+    background: #FFFFFF;
+    border: 1px solid var(--line-light);
+    border-radius: var(--radius-card);
+    padding: 28px 24px;
+    box-shadow: var(--shadow-soft);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: all 0.3s var(--ease-apple);
+}
+
+.concept-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-hover);
+}
+
+.concept-card h3 {
+    font-size: 17px;
+    margin-bottom: 8px;
+    color: var(--text-dark);
+}
+
+.concept-card p {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.55;
+}
+
+/* ============================================================
+   7. Lluvia de ideas dinámica
+   ============================================================ */
+.ideas-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 24px;
+    align-items: stretch;
+    justify-content: center;
+}
+
+.input-box {
+    width: 100%;
+    padding: 12px 18px;
+    border: 1px solid var(--line-light);
+    border-radius: var(--radius-pill);
+    font-family: var(--font-sans);
+    font-size: 14.5px;
+    background: #FFFFFF;
+    color: var(--text-dark);
+    outline: none;
+    transition: all 0.2s ease;
+    text-align: center;
+}
+
+.input-box:focus {
+    border-color: var(--neon-blue);
+    box-shadow: 0 0 0 3px rgba(9, 96, 225, 0.15);
+}
+
+.btn-pill {
+    background: var(--deep-blue);
+    color: var(--white);
+    border: none;
+    border-radius: var(--radius-pill);
+    padding: 9px 20px;
+    font-size: 13.5px;
+    font-weight: 550;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s var(--ease-apple);
+}
+
+.btn-pill:hover {
+    background: var(--neon-blue);
+    transform: scale(1.02);
+}
+
+.btn-subtle {
+    background: rgba(255, 255, 255, 0.1);
+    color: #BACADE;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: var(--radius-pill);
+    padding: 6px 16px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.25s var(--ease-apple);
+    margin: 12px auto 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.btn-subtle:hover {
+    background: rgba(228, 55, 0, 0.2);
+    color: var(--white);
+    border-color: var(--rocket-red);
+}
+
+.ideas-chips {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    min-height: 70px;
+    padding: 8px;
+}
+
+.idea-chip {
+    background: #F0F4FA;
+    color: var(--text-dark);
+    border-radius: var(--radius-pill);
+    padding: 8px 16px;
+    font-size: 13.5px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+}
+
+.idea-chip button {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+}
+
+.idea-chip button:hover {
+    background: rgba(0, 0, 0, 0.1);
+    color: var(--text-dark);
+}
+
+/* ============================================================
+   8. Votación dinámica alimentada por las ideas
+   ============================================================ */
+.poll-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+    justify-content: center;
+    max-width: 1080px;
+    margin: 0 auto;
+}
+
+.poll-card-dynamic {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1.5px solid rgba(255, 255, 255, 0.14);
+    border-radius: var(--radius-card);
+    padding: 24px 20px;
+    cursor: pointer;
+    transition: all 0.3s var(--ease-apple);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+}
+
+.poll-card-dynamic:hover {
+    border-color: var(--blue-yonder);
+    background: rgba(255, 255, 255, 0.09);
+    transform: translateY(-3px);
+}
+
+.poll-card-dynamic.selected {
+    border: 2px solid var(--neon-yellow);
+    background: rgba(234, 254, 7, 0.08);
+    box-shadow: 0 10px 30px rgba(234, 254, 7, 0.15);
+}
+
+.poll-card-title {
+    font-weight: 600;
+    font-size: 15.5px;
+    margin-bottom: 16px;
+    color: var(--white);
+    text-align: center;
+    line-height: 1.4;
+    min-height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Metadatos de votos y porcentaje: claros, centrados y separados */
+.poll-meta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 14px;
+    width: 100%;
+}
+
+.poll-votes-badge {
+    font-size: 13.5px;
+    font-weight: 550;
+    color: #BACADE;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 3px 12px;
+    border-radius: var(--radius-pill);
+}
+
+.poll-percent-badge {
+    font-size: 13.5px;
+    font-weight: 700;
+    color: var(--neon-yellow);
+    background: rgba(234, 254, 7, 0.15);
+    padding: 3px 12px;
+    border-radius: var(--radius-pill);
+}
+
+.poll-bar {
+    width: 90%;
+    height: 7px;
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: var(--radius-pill);
+    overflow: hidden;
+}
+
+.poll-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--blue-yonder), var(--neon-yellow));
+    width: 0%;
+    transition: width 0.4s var(--ease-apple);
+    border-radius: var(--radius-pill);
+}
+
+/* ============================================================
+   9. Cuaderno de acuerdos centrado
+   ============================================================ */
+.agreements-box {
+    margin-top: 32px;
+    max-width: 820px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.agreements-textarea {
+    width: 100%;
+    min-height: 150px;
+    border: 1px solid var(--line-light);
+    border-radius: 20px;
+    padding: 20px 24px;
+    font-family: var(--font-sans);
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--text-dark);
+    background: #FFFFFF;
+    outline: none;
+    resize: vertical;
+    text-align: left;
+    box-shadow: var(--shadow-soft);
+}
+
+.agreements-textarea:focus {
+    border-color: var(--neon-blue);
+    box-shadow: 0 0 0 3px rgba(9, 96, 225, 0.15);
+}
+
+/* ============================================================
+   10. Pie de página minimalista NASA & Apple
+   ============================================================ */
+.footer {
+    padding: 48px 24px;
+    text-align: center;
+    font-size: 13.5px;
+    color: #8CA3C7;
+    background: var(--cosmic-black);
+}
+
+.footer p {
+    text-align: center;
+}
+
+/* Animaciones con scroll */
+.fade-up {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.75s var(--ease-apple), transform 0.75s var(--ease-apple);
+}
+
+.fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ============================================================
+   11. Responsividad
+   ============================================================ */
+@media (max-width: 960px) {
+    .scrolly-craft-stage,
+    .scrolly-craft-stage.reverse {
+        grid-template-columns: 1fr;
+        padding: 28px 20px;
+    }
+    .scrolly-craft-stage.reverse .stage-3d-pane {
+        order: 1;
+    }
+    .scrolly-craft-stage.reverse .stage-text-pane {
+        order: 2;
+    }
+    .stage-3d-pane {
+        height: 360px;
+    }
+    .grid-4, .grid-3 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .ideas-grid {
+        grid-template-columns: 1fr;
+    }
+    .nav-item {
+        padding: 5px 9px;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 580px) {
+    .grid-4, .grid-3, .grid-2 {
+        grid-template-columns: 1fr;
+    }
+    .hero-title {
+        font-size: 32px;
+    }
+    .stage-3d-pane {
+        height: 300px;
+    }
+}

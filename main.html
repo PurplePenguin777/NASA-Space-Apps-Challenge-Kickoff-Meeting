@@ -151,7 +151,7 @@
         .slide.active {
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: safe center;
             align-items: center;
             text-align: center;
         }
@@ -865,9 +865,13 @@
                 height: auto !important;
                 min-height: calc(100vh - 140px);
                 max-height: none !important;
-                padding: clamp(24px, 5vw, 36px) clamp(18px, 4vw, 30px);
+                padding: clamp(20px, 4vw, 32px) clamp(16px, 4vw, 26px);
                 border-radius: 22px;
                 overflow: visible !important;
+            }
+
+            .slide.active {
+                justify-content: flex-start !important;
             }
 
             .grid3 {
@@ -890,6 +894,356 @@
                 position: static;
                 margin-top: 24px;
                 text-align: center;
+            }
+        }
+
+        /* Mobile Phones in Landscape & Low-Height Screens */
+        @media (orientation: landscape) and (max-height: 540px), (max-height: 500px) {
+            html, body {
+                height: auto !important;
+                overflow-y: auto !important;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .deck {
+                height: auto !important;
+                min-height: 100vh;
+                overflow: visible !important;
+            }
+
+            .topbar {
+                height: 42px !important;
+                padding: 0 16px !important;
+            }
+
+            .brand {
+                font-size: 12px !important;
+            }
+
+            .pill {
+                padding: 4px 10px !important;
+                font-size: 11px !important;
+            }
+
+            .progress {
+                margin: 0 16px !important;
+            }
+
+            .footer {
+                height: 44px !important;
+                padding: 0 16px !important;
+            }
+
+            .navbtn {
+                width: 32px !important;
+                height: 32px !important;
+                font-size: 16px !important;
+            }
+
+            .counter {
+                font-size: 11px !important;
+                min-width: 45px !important;
+            }
+
+            .hint {
+                display: none !important;
+            }
+
+            .stage {
+                padding: 8px 12px !important;
+                overflow: visible !important;
+                min-height: auto !important;
+                display: block !important;
+            }
+
+            .slide {
+                height: auto !important;
+                min-height: auto !important;
+                max-height: none !important;
+                padding: 16px 20px !important;
+                border-radius: 18px !important;
+                overflow: visible !important;
+                margin: 0 auto !important;
+                width: min(960px, 100%) !important;
+            }
+
+            .slide.active {
+                display: flex !important;
+                flex-direction: column !important;
+                justify-content: flex-start !important;
+                align-items: center !important;
+            }
+
+            .eyebrow {
+                font-size: 10px !important;
+                margin-bottom: 6px !important;
+            }
+
+            h1 {
+                font-size: clamp(22px, 3.8vw, 30px) !important;
+                line-height: 1.12 !important;
+                margin-bottom: 8px !important;
+            }
+
+            h2 {
+                font-size: clamp(18px, 3vw, 24px) !important;
+                line-height: 1.15 !important;
+                margin-bottom: 6px !important;
+            }
+
+            h3 {
+                font-size: 13.5px !important;
+                margin-bottom: 3px !important;
+            }
+
+            p {
+                font-size: 12px !important;
+                line-height: 1.4 !important;
+            }
+
+            .lead {
+                font-size: 13px !important;
+                line-height: 1.4 !important;
+            }
+
+            .tag-group {
+                margin-top: 10px !important;
+                gap: 5px !important;
+            }
+
+            .tag {
+                padding: 4px 8px !important;
+                font-size: 11px !important;
+            }
+
+            .hero-grid {
+                display: grid !important;
+                grid-template-columns: 1.2fr .8fr !important;
+                gap: 16px !important;
+            }
+
+            .hero-art {
+                min-height: 140px !important;
+                max-height: 190px !important;
+                padding: 12px !important;
+                border-radius: 20px !important;
+            }
+
+            .hero-art svg {
+                max-height: 160px !important;
+                max-width: 240px !important;
+            }
+
+            .split {
+                display: grid !important;
+                grid-template-columns: 1.1fr .9fr !important;
+                gap: 16px !important;
+                margin-top: 10px !important;
+            }
+
+            .illustration {
+                min-height: 140px !important;
+                max-height: 190px !important;
+                padding: 12px !important;
+                border-radius: 20px !important;
+            }
+
+            .illustration svg {
+                max-height: 160px !important;
+                max-width: 240px !important;
+            }
+
+            .steps {
+                gap: 6px !important;
+            }
+
+            .step {
+                padding: 5px 0 !important;
+                gap: 10px !important;
+                grid-template-columns: 28px 1fr !important;
+            }
+
+            .num {
+                width: 28px !important;
+                height: 28px !important;
+                font-size: 11.5px !important;
+                border-radius: 8px !important;
+            }
+
+            .grid4,
+            .role-list,
+            .poll,
+            .agenda {
+                grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+                gap: 8px !important;
+                margin-top: 10px !important;
+            }
+
+            .grid3 {
+                grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+                gap: 8px !important;
+                margin-top: 10px !important;
+            }
+
+            .grid2 {
+                grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+                gap: 8px !important;
+                margin-top: 10px !important;
+            }
+
+            .card {
+                padding: 10px 12px !important;
+                border-radius: 16px !important;
+            }
+
+            .card .icon {
+                width: 30px !important;
+                height: 30px !important;
+                font-size: 13px !important;
+                margin-bottom: 6px !important;
+                border-radius: 10px !important;
+            }
+
+            .card .icon svg {
+                width: 17px !important;
+                height: 17px !important;
+            }
+
+            .card p {
+                font-size: 11px !important;
+                line-height: 1.35 !important;
+            }
+
+            .role-item {
+                padding: 8px 10px !important;
+                border-radius: 16px !important;
+                gap: 4px !important;
+            }
+
+            .role-item .bubble {
+                width: 28px !important;
+                height: 28px !important;
+                font-size: 13px !important;
+                border-radius: 8px !important;
+            }
+
+            .role-item h3 {
+                font-size: 12.5px !important;
+                margin-bottom: 2px !important;
+            }
+
+            .role-item p {
+                font-size: 10.5px !important;
+                line-height: 1.3 !important;
+            }
+
+            .callout {
+                padding: 8px 14px !important;
+                font-size: 11.5px !important;
+                line-height: 1.4 !important;
+                margin-top: 10px !important;
+                border-radius: 14px !important;
+            }
+
+            .note-area {
+                grid-template-columns: 1fr 1fr !important;
+                gap: 12px !important;
+                margin-top: 10px !important;
+            }
+
+            .panel {
+                padding: 12px 14px !important;
+                border-radius: 16px !important;
+            }
+
+            .panel textarea {
+                height: 65px !important;
+                min-height: 50px !important;
+                padding: 8px 10px !important;
+                font-size: 12px !important;
+                border-radius: 12px !important;
+            }
+
+            #ideaInput {
+                height: 65px !important;
+                min-height: 50px !important;
+            }
+
+            #agreements {
+                height: 75px !important;
+                min-height: 60px !important;
+                font-size: 12.5px !important;
+            }
+
+            .action {
+                padding: 6px 14px !important;
+                font-size: 11.5px !important;
+                margin-top: 6px !important;
+            }
+
+            .idea-list {
+                max-height: 55px !important;
+                margin-top: 6px !important;
+            }
+
+            .idea {
+                padding: 4px 8px !important;
+                font-size: 11px !important;
+            }
+
+            .option {
+                padding: 8px 10px !important;
+                border-radius: 16px !important;
+            }
+
+            .option .icon {
+                width: 28px !important;
+                height: 28px !important;
+                margin-bottom: 4px !important;
+            }
+
+            .option h3 {
+                font-size: 12px !important;
+            }
+
+            .option p {
+                font-size: 10.5px !important;
+                line-height: 1.3 !important;
+            }
+
+            .vote-count {
+                font-size: 10.5px !important;
+                margin-top: 4px !important;
+            }
+
+            .bar {
+                margin-top: 4px !important;
+                height: 4px !important;
+            }
+
+            .vote-note {
+                font-size: 11px !important;
+                margin-top: 8px !important;
+            }
+
+            .agenda div {
+                padding: 8px !important;
+                border-radius: 14px !important;
+            }
+
+            .agenda b {
+                font-size: 11.5px !important;
+            }
+
+            .agenda span {
+                font-size: 10.5px !important;
+            }
+
+            .end-mark {
+                position: static !important;
+                margin-top: 14px !important;
+                text-align: center !important;
+                font-size: 10px !important;
             }
         }
 
